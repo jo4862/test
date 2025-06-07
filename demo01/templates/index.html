@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>图像加密与解密工具</title>
+    <meta charset="utf-8">
+    <style>
+        *{
+        margin: 0;
+        padding: 0;
+        }
+        p {
+        margin: 0vh 10vh;
+        padding: 10px;
+        font-size: 2vh;
+        text-decoration: none;
+        display: inline;
+        }
+        a{
+        text-decoration: none;
+        color: white;
+        font-size: 4vh;
+        background-color: #0080ff;
+        border-radius: 10px;
+        padding: 10px;
+        line-height: 20vh;
+        margin: 10vw;
+        }
+        a:hover{
+        text-decoration: underline;
+        }
+        h1{
+        font-size: 3vh;
+        height: 10vh;
+        color: white;
+        line-height: 10vh;
+        }
+        div{
+        background-color: black;
+        }
+        .m{
+        background-color: antiquewhite;
+        height: 90vh;
+        display: flex;
+        justify-content: center;
+        background-image:url("/static/image/paqipc.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        }
+        @media screen and (max-width:1248px){
+        .m{
+        flex-direction: column;
+        background-image:url("/static/image/paqi.jpg");
+        align-items: center;
+        }
+        p{
+        margin: 10vh 0;
+        }
+        }
+    </style>
+</head>
+    <div>
+        <h1>图像加密与解密工具</h1>
+        <section class="m">
+            <p><a href="/defilter">加密 →</a></p>
+            <p><a href="/decode">解密 →</a></p>
+        </section>
+
+    </div>
+
+</html>
