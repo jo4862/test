@@ -10,7 +10,8 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 限制16MB
 os.makedirs(app.config['DECODE_FOLDER'], exist_ok=True)
 app.config['DEFILTER_FOLDER'] = 'defilter'
 os.makedirs(app.config['DEFILTER_FOLDER'], exist_ok=True)
-
+app.config['AOYI_FOLDER'] = 'aoyi'
+os.makedirs(app.config['AOYI_FOLDER'], exist_ok=True)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 def allowed_file(filename):
@@ -101,5 +102,35 @@ def defilter_image():
 
     return render_template('defilter.html')
 
+@app.route('/aoyi', methods=['GET', 'POST'])
+def aoyi_image():
+    if request.method == 'POST':
+        # 检查是否有文件上传
+        if 'file' not in request.files:
+            return render_template('aoyi.html', error='没有选择文件')
+
+        file = request.files['file']
+
+        # 验证文件
+        if file.filename == '':
+            return render_template('aoyi.html', error='未选择文件')
+
+        if not allowed_file(file.filename):
+            return render_template('aoyi.html', error='仅支持PNG/JPG/JPEG/GIF格式')
+
+        try:
+            # 保存原始文件
+            original_path2 = os.path.join(app.config['AOYI_FOLDER'], file.filename)
+            file.save(original_path2)
+
+            drlin.aoyi(original_path2)
+            #os.remove(original_path2)
+            return send_file("static/mp4/output.mp4", as_attachment=True)
+
+        except Exception as e:
+            return render_template('aoyi.html', error=f'处理失败: {str(e)}')
+
+    return render_template('aoyi.html')
+
 if __name__ == '__main__':
-    app.run(port = 8001)
+    app.run(debug=True)

@@ -13,16 +13,17 @@
         text-decoration: none;
         display: inline;
         }
+        div {
+        position: absolute;
+        right: 5vh;
+        top: 0;
+        }
         a{
         text-decoration: none;
         font-size: 3vh;
         color: white;
         border-radius: 10px;
         padding: 10px;
-        line-height: 5vh;
-        position: absolute;
-        right: 5vh;
-        top: 0;
         line-height: 8vh;
         }
         a:hover{
@@ -80,6 +81,21 @@
         border: none; /* 移除边框 */
         margin: 1vh;
         }
+        @media screen and (max-width:1248px){
+        a{
+        font-size: 3vh;
+        color: white;
+        border-radius: 0;
+        padding: 0;
+        line-height: 5vh;
+        }
+        p {
+        padding: 0;
+        font-size: 1vh;
+        text-decoration: none;
+        display: flex;
+        }
+        }
     </style>
 </head>
 <body>
@@ -96,8 +112,12 @@
         <input type="number" name="number" value="123" required>
         <button type="submit">上传并处理</button>
     </form>
+        </section>
+        <div>
     <p><a href="/decode">解密 →</a></p>
-    </section>
+    <p><a href="/">首页 →</a></p>
+            </div>
+
 
 </body>
 </html>
